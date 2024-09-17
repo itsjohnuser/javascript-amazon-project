@@ -84,7 +84,18 @@ document.querySelectorAll('.js-add-to-cart')
       });
 
     }
-   
+
+    let cartQuantity = 0;
+
+      cart.forEach((Item) => {
+        const quantity = parseInt(Item.quantity, 10); // Convert to integer with radix 10
+        if (!isNaN(quantity)) { // Check if quantity is a valid number
+          cartQuantity += quantity;
+        }
+      });
+
+      document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
+      console.log(cartQuantity);
     console.log(cart);
   });
 
