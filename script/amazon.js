@@ -1,5 +1,7 @@
-import { cart } from "../data/cart.js";
+import { cart,addToCart } from "../data/cart.js";
 import { products } from "../data/products.js";
+
+
 
 
 let productsHTML = '';
@@ -71,46 +73,34 @@ document.querySelector('.js-products-grid').innerHTML = productsHTML;
 //   ...
 // }
 // (2 and 5 are ids that are returned when we call setTimeout).
+
+
+
+function updateCartQuantity(){
+  let cartQuantity = 0;
+
+      cart.forEach((cartItem) => {
+        const quantity = parseInt(cartItem.quantity, 10); // Convert to integer with radix 10
+        if (!isNaN(quantity)) { // Check if quantity is a valid number
+          cartQuantity += quantity;
+        }
+      });
+      document.querySelector('.js-cart-quantity')
+        .innerHTML = cartQuantity;
+}
+
 const addedMessageTimeouts = {};
 
 document.querySelectorAll('.js-add-to-cart')
   .forEach((button) => {
     button.addEventListener('click', () => {
       const {productId} = button.dataset;
+      addToCart(productId);
+      updateCartQuantity();
 
-      let matchingItem;
+      
 
-      cart.forEach((item) => {
-        if (productId === item.productId) {
-          matchingItem = item;
-        }
-      });
-
-      const quantitySelector = document.querySelector(
-        `.js-quantity-selector-${productId}`
-      );
-      const quantity = Number(quantitySelector.value);
-
-      if (matchingItem) {
-        matchingItem.quantity += quantity;
-      } else {
-        cart.push({
-          productId,
-          quantity
-        });
-      }
-
-      let cartQuantity = 0;
-
-      cart.forEach((Item) => {
-        const quantity = parseInt(Item.quantity, 10); // Convert to integer with radix 10
-        if (!isNaN(quantity)) { // Check if quantity is a valid number
-          cartQuantity += quantity;
-        }
-      });
-
-      document.querySelector('.js-cart-quantity')
-        .innerHTML = cartQuantity;
+      
 
       const addedMessage = document.querySelector(
         `.js-added-to-cart-${productId}`
