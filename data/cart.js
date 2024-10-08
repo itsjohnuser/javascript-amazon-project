@@ -36,13 +36,10 @@ export function addToCart(productId){
         }
       });
 
-      const quantitySelector = document.querySelector(
-        `.js-quantity-selector-${productId}`
-      );
-      const quantity = Number(quantitySelector.value);
+     
 
       if (matchingItem) {
-        matchingItem.quantity += quantity;
+        matchingItem.quantity += 1;
       } else {
         cart.push({
           productId : productId,
