@@ -73,13 +73,14 @@ const object2 = {
 console.log(object2);
 */
 
+/*
 function logThis(){
   console.log(this);
 }
 
 logThis();
 logThis.call('hello');
-
+*/
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
