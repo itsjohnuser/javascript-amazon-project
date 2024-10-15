@@ -136,7 +136,7 @@ export function loadProducts(fun) {
     console.error('unexpected error. please try again later');
   });
 
-  xhr.open('GET', 'https://.supersimplebackend.dev/products');
+  xhr.open('GET', 'https://supersimplebackend.dev/products');
   xhr.send();
 }
 

@@ -19,6 +19,8 @@ function Cart(localStorageKey){
       }
   
     },
+
+    
   
     saveToStorage() {
       localStorage.setItem('localStorageKey', JSON.stringify(this.cartItems));
@@ -80,7 +82,9 @@ function Cart(localStorageKey){
 
   return cart;
 
-}
+};
+
+
 
 const cart = Cart('cart-oop');
 
